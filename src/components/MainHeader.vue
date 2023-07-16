@@ -31,7 +31,7 @@ header {
   align-items: center;
 
   .logo-container {
-    width: 220px;
+    width: 180px;
     padding: 30px 0;
     display: flex;
     justify-content: center;
