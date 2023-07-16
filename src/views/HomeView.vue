@@ -19,13 +19,15 @@
 import { defineComponent } from "vue";
 import FormDescription from "../components/FormDescription.vue";
 import MainHeader from "../components/MainHeader.vue";
+import gptService from '../services/gpt-services';
 
 export default defineComponent({
   components: { MainHeader, FormDescription },
   name: "HomeView",
   methods: {
-    submitDescription(value: string) {
-      console.log(value)
+    submitDescription(value: object) {
+      gptService.createDescription(value)
+        .then(res => console.log(res))
     }
   }
 })

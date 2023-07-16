@@ -1,9 +1,9 @@
 <template>
-  <form @submit.prevent="$emit('submitDescription', description)">
+  <form @submit.prevent="$emit('submitDescription', value)">
     <h3>Insira aqui o nome do seu melhor item!</h3>
     <div class="description-generate">
       <label>Produto</label>
-      <input type="text" v-model="description" placeholder="nome do produto">
+      <input type="text" v-model="value.description" placeholder="nome do produto">
       <button type="submit">Criar descrição</button>
     </div>
   </form>
@@ -17,7 +17,9 @@ export default defineComponent({
   emits: ['submitDescription'],
   data() {
     return {
-      description: '',
+      value: {
+        description: '',
+      }
     }
   },
 })
@@ -31,6 +33,7 @@ form {
     font-size: 1.7rem;
     color: #0d0d0d;
     font-weight: 600;
+    margin-bottom: 20px;
     letter-spacing: -1px;
   }
   .description-generate {
