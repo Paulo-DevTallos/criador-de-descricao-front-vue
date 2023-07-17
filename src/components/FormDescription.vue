@@ -55,11 +55,13 @@ form {
       border-radius: 8px;
       outline: none;
       border: 1px solid #dbdbdb;
+      background-color: #f4f4f4;
       margin-bottom: 10px;
       transition: .2s ease-in-out;
 
       &:focus {
         border-color: #0d0d0d;
+        background-color: #fafafa;
       }
     }
 
