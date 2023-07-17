@@ -4,7 +4,8 @@
     <div class="description-generate">
       <label>Produto</label>
       <input type="text" v-model="value.description" placeholder="nome do produto">
-      <button type="submit">Criar descrição</button>
+      <p>defina um tamanho para o seu texto:...</p>
+      <button type="submit">Gerar descrição</button>
     </div>
   </form>
 </template>
