@@ -8,7 +8,17 @@
       </div>
       <div class="content content-form">
         <div class="form-container">
-          <form-description @submit-description="submitDescription" />
+          <div class="loading-area" v-if="formLoading">
+            <vue3-lottie :animationData="loader" :speed="2" :height="200" :width="200"/>
+            <p>Estamos criando a melhor descrição para você!...</p>
+          </div>
+          <div v-else>
+            <form-description @submit-description="submitDescription" />
+            <div>
+              <p>Retorno do nome do produto</p>
+              <p>Aqui vai ser a descrição</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -17,17 +27,27 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { Vue3Lottie } from "vue3-lottie";
 import FormDescription from "../components/FormDescription.vue";
 import MainHeader from "../components/MainHeader.vue";
 import gptService from '../services/gpt-services';
+import loader from "../assets/lottie-animations/loader.json";
 
 export default defineComponent({
-  components: { MainHeader, FormDescription },
+  components: { MainHeader, FormDescription, Vue3Lottie },
   name: "HomeView",
+  data() {
+    return {
+      loader,
+      formLoading: false
+    }
+  },
   methods: {
     submitDescription(value: object) {
       gptService.createDescription(value)
-        .then(res => console.log(res))
+        .then(res => {
+          console.log(res.data)
+        })
     }
   }
 })
@@ -35,7 +55,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .home-view {
-  max-width: 85%;
+  max-width: 1300px;
   margin: 0 auto;
   height: 100vh;
 
@@ -54,7 +74,7 @@ export default defineComponent({
       align-items: flex-start;
 
       h1 {
-        font-size: 3rem;
+        font-size: 2.75rem;
         font-weight: 700;
         line-height: 1.2;
         margin-bottom: 35px;
@@ -72,14 +92,19 @@ export default defineComponent({
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
     }
     .form-container {
       background: #f4f4f4;
-      height: 50%;
+      color: #0d0d0d;
       width: 100%;
       border-radius: 24px;
       margin: 0 20px;
       padding: 40px;
+
+      .loading-area {
+        text-align: center;
+      }
     }
   }
 }
