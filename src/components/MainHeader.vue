@@ -4,21 +4,30 @@
       <img :src="logo" alt="Logo ProDescritpion">
     </div>
     <div>
-      <button>Crie sua conta</button>
+      <main-button @call_form_register="callFormRegister">
+        Crie sua lista!
+      </main-button>
     </div>
   </header>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import MainButton from './Button.vue';
 
 import logo from '@/assets/img/ProDescriber-removebg-preview.png';
 
 export default defineComponent({
   name: "MainHeader",
+  components: { MainButton },
   data() {
     return {
       logo,
+    }
+  },
+  methods: {
+    callFormRegister() {
+      alert('Aqui vai abrir um forms')
     }
   }
 })
