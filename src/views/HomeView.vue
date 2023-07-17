@@ -13,10 +13,11 @@
             <p>Estamos criando a melhor descrição para você!...</p>
           </div>
           <div v-else>
-            <form-description @submit-description="submitDescription" />
-            <div>
-              <p>Retorno do nome do produto</p>
-              <p>Aqui vai ser a descrição</p>
+            <form-description @submit-description="submitDescription" v-if="description.content === ''"/>
+            <div v-else class="description">
+              <p class="item">O que achou dessa ideia para o item: <strong>{{ description.item_name }}</strong></p>
+              <p class="description-content">{{ description.content }}</p>
+              <button>Salvar descrição</button>
             </div>
           </div>
         </div>
@@ -39,14 +40,25 @@ export default defineComponent({
   data() {
     return {
       loader,
-      formLoading: false
+      formLoading: false,
+      description: {
+        item_name: '',
+        content: ''
+      }
     }
   },
   methods: {
     submitDescription(value: object) {
+      this.formLoading = true;
+
       gptService.createDescription(value)
         .then(res => {
-          console.log(res.data)
+          if (res.status === 201) {
+            this.formLoading = false;
+
+            this.description['item_name'] = res.data.description;
+            this.description['content'] = res.data.response;
+          }
         })
     }
   }
@@ -104,6 +116,16 @@ export default defineComponent({
 
       .loading-area {
         text-align: center;
+      }
+
+      .description {
+        .item {
+          margin-bottom: 20px;
+        }
+
+        .description-content {
+
+        }
       }
     }
   }
