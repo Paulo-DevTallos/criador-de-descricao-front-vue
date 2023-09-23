@@ -1,6 +1,10 @@
 <template>
   <div class="breadcrumb-buttons">
-    <main-button v-for="(button, index) in buttons" :key="index">
+    <main-button
+      v-for="(button, index) in buttons"
+      :key="index"
+      @click="$emit('trigged_button', button.action)"
+    >
       {{ button.label }}
     </main-button>
   </div>
@@ -16,7 +20,8 @@ export default defineComponent({
   components: { MainButton },
   props: {
     buttons: { type: Array as () => BreadcrumbButtons[] }
-  }
+  },
+  emits: ['trigged_button'],
 });
 </script>
 
