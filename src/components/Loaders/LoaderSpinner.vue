@@ -28,7 +28,7 @@ export default defineComponent({
     height: 65px;
     border: 5px solid #fff;
     border-top: 5px solid #121212;
-    filter: drop-shadow(0 0 5px #ffffff60);
+    filter: drop-shadow(0 0 5px #ffffff33);
     border-radius: 50%;
     animation: roll 1s linear infinite;
     text-align: center;
