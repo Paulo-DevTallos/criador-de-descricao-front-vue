@@ -1,6 +1,7 @@
 <template>
   <header>
     <div class="logo-container">
+      <!--Implementar o router link para navegar para reestartar a tela-->
       <img :src="logo" alt="Logo ProDescritpion">
     </div>
     <div>
@@ -15,7 +16,7 @@
 import { defineComponent } from "vue";
 import MainButton from './Button.vue';
 
-import logo from '@/assets/img/ProDescriber-removebg-preview.png';
+import logo from '../assets/img/ProDescriber-removebg-preview.png';
 
 export default defineComponent({
   name: "MainHeader",
@@ -38,6 +39,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0 50px;
 
   .logo-container {
     width: 180px;
@@ -45,6 +47,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-bottom: 1px solid #fff;
 
     img {
       width: 100%;
