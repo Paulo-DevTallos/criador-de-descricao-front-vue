@@ -8,7 +8,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "MainButton",
+  name: "main-button",
   emits: ['call_form_register']
 })
 </script>
@@ -17,7 +17,7 @@ export default defineComponent({
 button {
   padding: 0 20px;
   height: 40px;
-  border-radius: 12px;
+  border-radius: 8px;
   border: 1px solid transparent;
   font-size: 1rem;
   cursor: pointer;
